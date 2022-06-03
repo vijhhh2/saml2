@@ -1,6 +1,5 @@
 *~
 node_modules
-lib-js
 *.html
 package-lock.json
 coverage
