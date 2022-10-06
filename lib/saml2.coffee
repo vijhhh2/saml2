@@ -382,7 +382,7 @@ pretty_assertion_attributes = (assertion_attributes) ->
     "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid": "primary_sid"
     "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname": "windows_account_name"
 
- _.chain(assertion_attributes)
+  _.chain(assertion_attributes)
     .pairs()
     .filter(([k, v]) -> (claim_map[k]? and v.length > 0))
     .map(([k, v]) -> [claim_map[k], v[0]])
@@ -562,7 +562,7 @@ module.exports.ServiceProvider =
           return cb ex
         delete uri.search # If you provide search and query search overrides query :/
         if options.sign_get_request
-           _.extend(uri.query, sign_request(deflated.toString('base64'), @private_key, options.relay_state))
+          _.extend(uri.query, sign_request(deflated.toString('base64'), @private_key, options.relay_state))
         else
           uri.query.SAMLRequest = deflated.toString 'base64'
           uri.query.RelayState = options.relay_state if options.relay_state?
